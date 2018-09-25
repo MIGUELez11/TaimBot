@@ -5,8 +5,11 @@
   "main": "APP.js",
   "engines": {
     "node": "8.9.1"
-  }
-  "module" {
-     "discord.js"
- },
+},
+
+  "dependencies": {
+     "discord.js": "^11.4.2",
+     "simple-youtube-api": "^5.0.2",
+     "ytdl-core":"^0.25.2"     
+ }
 }
