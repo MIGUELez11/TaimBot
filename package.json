@@ -1,29 +1,39 @@
 {
-  "name": "TAIMBOT",
-  "version": "1.0.0",
-  "description": "TAIM Gaming B0T",
-  "main": "APP.js",
-  "test": "APP0.js",
+  "name": "node-js-getting-started",
+  "version": "0.3.0",
+  "description": "A sample Node.js app using Express 4",
   "engines": {
-    "node": "8.9.4",
-    "npm": "5.6.x"
+    "node": "8.9.1"
   },
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node test.js"
   },
-  "keywords": [],
-  "author": "MIGUELez11",
-  "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "ffmpeg-binaries": "^4.0.0",
-    "node-gyp-build": "^3.4.0",
-    "node-pre-gyp": "^0.11.0",
-    "opusscript": "0.0.6",
-    "python": "0.0.4",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
     "simple-youtube-api": "^5.0.2",
-    "uws": "^99.0.0",
-    "ytdl": "^0.10.3",
     "ytdl-core": "^0.25.2"
-  }
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heroku/node-js-getting-started.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heroku/node-js-getting-started/issues"
+  },
+  "homepage": "https://github.com/heroku/node-js-getting-started#readme",
+  "author": ""
 }
