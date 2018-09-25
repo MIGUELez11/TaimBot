@@ -12,6 +12,7 @@ const ytdl = require('ytdl-core');
 const { TOKEN, PREFIX, GOOGLE_API_KEY, DEFAULTROLE } = require('./config');
 
 //CREATE A CLIENT
+npm i discord.js;
 const client = new Discord.Client();
 
 //Variable declaration
