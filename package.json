@@ -5,5 +5,5 @@
   "engines": {
     "node": "8.9.1"
   },
-  "main": "APP.js",
+  "main": "APP.js"
 }
