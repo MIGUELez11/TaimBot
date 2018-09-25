@@ -15,7 +15,6 @@
   "author": "MIGUELez11",
   "license": "ISC",
   "dependencies": {
-    "bufferutil": "^4.0.0",
     "discord.js": "^11.4.2",
     "ffmpeg-binaries": "^4.0.0",
     "node-gyp-build": "^3.4.0",
