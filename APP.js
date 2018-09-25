@@ -9,17 +9,59 @@ const Discord = require('discord.js');
 const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const { TOKEN, PREFIX, GOOGLE_API_KEY } = require('./config');
+const { TOKEN, PREFIX, GOOGLE_API_KEY, DEFAULTROLE } = require('./config');
 
 //CREATE A CLIENT
 const client = new Discord.Client();
 
 //Variable declaration
 var msg;
+var guild;
+var Role;
+
+//colors
+var Reset = "\x1b[0m";
+var Bright = "\x1b[1m";
+var Dim = "\x1b[2m";
+var Underscore = "\x1b[4m";
+var Blink = "\x1b[5m";
+var Reverse = "\x1b[7m";
+var Hidden = "\x1b[8m";
+
+var FgBlack = "\x1b[30m";
+var FgRed = "\x1b[31m";
+var FgGreen = "\x1b[32m";
+var FgYellow = "\x1b[33m";
+var FgBlue = "\x1b[34m";
+var FgMagenta = "\x1b[35m";
+var FgCyan = "\x1b[36m";
+var FgWhite = "\x1b[37m";
+
+var BgBlack = "\x1b[40m";
+var BgRed = "\x1b[41m";
+var BgGreen = "\x1b[42m";
+var BgYellow = "\x1b[43m";
+var BgBlue = "\x1b[44m";
+var BgMagenta = "\x1b[45m";
+var BgCyan = "\x1b[46m";
+var BgWhite = "\x1b[47m";
 
 //Initialize variables
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
+
+
+/*
+------------------------------------------------------
+                        FUNCTIONS
+------------------------------------------------------
+*/
+
+function RandomNumber(min,max) {
+   var number = Math.random()*max + min;
+   return number;
+}
+
 
 /*
 ------------------------------------------------------
@@ -29,10 +71,17 @@ const queue = new Map();
 client.on('ready', () => {
    //Clears the console, prints I'm ready and set the playing game to TAIM GAMING
    console.clear();
-   console.log('Toy Ready');
+   console.log(BgGreen,'Toy Ready', Reset);
+   console.log('\n');
+
    client.user.setActivity('TAIM GAMING', { type: 'watching' })
-   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
-   .catch(console.error);
+      .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
+      .catch(console.error);
+
+   guild = client.guilds.get('380446323205210112');
+   Role = guild.roles.find(x => x.name === DEFAULTROLE);
+   console.log(`Role is`, BgYellow,`${Role.name}`, Reset);
+
 });
 
 //DETECT DIFFERENT PROBLEMS
@@ -62,12 +111,12 @@ client.on('message', async msg => { // eslint-disable-line
 	//arg1 = command.slice(PREFIX.length)
 
    if (command === 'musica' || command === 'music' || command === 'dj') {
-   	if (arg1 === 'play' || arg1 === "song") {
+   	if (arg1 === 'play' || arg1 === "song" || arg1 === 'reproducir' || arg1 === 'cancion') {
    		const voiceChannel = msg.member.voiceChannel;
    		if (!voiceChannel) return msg.channel.send('Necesitas estar en un canal de voz para reproducir canciones');
    		const permissions = voiceChannel.permissionsFor(msg.client.user);
    		if (!permissions.has('CONNECT')) {
-   			return msg.channel.send('Llama a un ADMIN que no tengo permisos');
+   			return msg.channel.send('Llama a un ADMIN, que no tengo permisos');
    		}
    		if (!permissions.has('SPEAK')) {
    			return msg.channel.send('No puedo hablar, habla con MIGUELez11 para que me desmutee');
@@ -113,42 +162,42 @@ client.on('message', async msg => { // eslint-disable-line
    			}
    			return handleVideo(video, msg, voiceChannel);
    		}
-   	} else if (arg1 === 'skip') {
+   	} else if (arg1 === 'skip' || arg1 === 'saltar' || arg1 === 'siguiente' || arg1 === 'next') {
    		if (!msg.member.voiceChannel) return msg.channel.send('No estás en un canal de voz!');
    		if (!serverQueue) return msg.channel.send('No hay ninguna canción reproduciéndose.');
    		serverQueue.connection.dispatcher.end('Y... Siguiente canción');
    		return undefined;
-   	} else if (arg1 === 'stop') {
+   	} else if (arg1 === 'stop' || arg1 === 'parar' || arg1 === 'terminar') {
    		if (!msg.member.voiceChannel) return msg.channel.send('no estás en un canal de voz!');
    		if (!serverQueue) return msg.channel.send('Por aquí no hay nada .');
    		serverQueue.songs = [];
    		serverQueue.connection.dispatcher.end('Y adios a la musica :(');
    		return undefined;
-   	} else if (arg1 === 'volume') {
+   	} else if (arg1 === 'volume' || arg1 === 'volumen') {
    		if (!msg.member.voiceChannel) return msg.channel.send('No estás en un canal de voz!');
    		if (!serverQueue) return msg.channel.send('Pero a que le quieres subir el volumen.');
    		if (!args[2]) return msg.channel.send(`El volumen actual es: **${serverQueue.volume}**`);
    		serverQueue.volume = args[2];
    		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[2] / 5);
    		return msg.channel.send(`El nuevo volumen es: **${args[2]}**`);
-   	} else if (arg1 === 'np') {
+   	} else if (arg1 === 'np' || arg1 === 'playing' || arg1 === 'sonando') {
    		if (!serverQueue) return msg.channel.send('No hay nada reproduciendo.');
    		return msg.channel.send(`🎶 Sonando: **${serverQueue.songs[0].title}**`);
-   	} else if (arg1 === 'queue') {
+   	} else if (arg1 === 'queue' || arg1 === 'playlist' || arg1 === 'cola') {
    		if (!serverQueue) return msg.channel.send('Nada en la cola.');
    		return msg.channel.send(`
    __**LA COLA ^.^ :**__
    ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
    **SONANDO:** ${serverQueue.songs[0].title}
    		`);
-   	} else if (arg1 === 'pause') {
+   	} else if (arg1 === 'pause' || arg1 === 'pausar' || arg1 === 'pausa') {
    		if (serverQueue && serverQueue.playing) {
    			serverQueue.playing = false;
    			serverQueue.connection.dispatcher.pause();
    			return msg.channel.send('⏸ Yo te lo paro!');
    		}
    		return msg.channel.send('No oigo nada.');
-   	} else if (arg1 === 'resume') {
+   	} else if (arg1 === 'resume' || arg1 === 'resumir' || arg1 === 'continuar') {
    		if (serverQueue && !serverQueue.playing) {
    			serverQueue.playing = true;
    			serverQueue.connection.dispatcher.resume();
@@ -243,22 +292,48 @@ client.on('message', message => {
          case PREFIX + 'hola':
          case PREFIX + 'hello':
          case PREFIX + 'ey':
+         case PREFIX + 'hey':
             console.log(msg);
             // Send "pong" to the same channel
-            message.channel.send(`Ey, que pasa ${message.author}? `);
+            //console.log(message.member.GuildMember.username);
+            //message.member.addRole("name","TAIMERS");
+            switch (Math.round(RandomNumber(0,3))) {
+               case 0 : message.channel.send(`Ey, que pasa ${message.author}?`); break;
+               case 1 : message.channel.send(`Allo ${message.author}`); break;
+               case 2 : message.channel.send(`Cómo vamos ${message.author}?`); break;
+               case 3 : message.channel.send(`Buenas ${message.author}`); break;
+            }
+
             //message.member.voiceChannel.join();
             break;
-
          case PREFIX + 'adios':
          case PREFIX + 'adeu':
          case PREFIX + 'chao':
             console.log(msg);
             // Send "pong" to the same channel
-            message.channel.send(`Hasta otra ${message.author}`);
+            switch (Math.round(RandomNumber(0,3))) {
+               case 0 : message.channel.send(`Hasta otra ${message.author}`); break;
+               case 1 : message.channel.send(`Chao pescao ${message.author}!`); break;
+               case 2 : message.channel.send(`Nos vemos ;P ${message.author}!!`); break;
+               case 3 : message.channel.send(`${message.author} Volverás verdad? `); break;
+            }
             //message.member.voiceChannel.leave();
+            break;
+         case PREFIX + 'role':
+            console.log(`${Role.name}`);
             break;
       }
    }
 });
+
+
+
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+   console.log('User ' + member.username + 'has joined the server!');
+   console.log(Role.id);
+   member.addRole(Role.id);
+});
+
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
 client.login(TOKEN);
