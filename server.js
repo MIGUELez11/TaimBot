@@ -47,9 +47,19 @@ var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
 
-.listen(5000, function () {
-  console.log('Express server listening on %d, in %s mode', 5000, app.get('env'));
-});
+const cool = require('cool-ascii-faces')
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .get('/cool', (req, res) => res.send(cool()))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 //Initialize variables
 //if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
