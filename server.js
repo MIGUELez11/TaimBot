@@ -72,11 +72,15 @@ const queue = new Map();
                         FUNCTIONS
 ------------------------------------------------------
 */
+var https = require("http");
+var date = new Date();
+var h d.getHours();
+var min d.getMinutes();
 
-if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
-   TOKEN = process.env.TOKEN;
-   GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-}
+setInterval (function()) {
+   http.get("http://taimbot.herokuapp.com");
+}, (5*60*1000);
+
 
 function RandomNumber(min,max) {
    var number = Math.random()*max + min;
