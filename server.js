@@ -51,11 +51,31 @@ const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 
 
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+
+
+
 /*
 ------------------------------------------------------
                         FUNCTIONS
 ------------------------------------------------------
 */
+
+if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
+   TOKEN = process.env.TOKEN;
+   GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+}
 
 function RandomNumber(min,max) {
    var number = Math.random()*max + min;
