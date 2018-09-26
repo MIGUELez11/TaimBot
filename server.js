@@ -82,6 +82,9 @@ setInterval (function() {
    console.log("pinged");
 }, 5*60*1000);
 
+//Mantener servidor abierto 12 horas al día, y entonces pingear a otro igual, pero que este esté abierto las otras
+//12, al terminar de nuevo ese ciclo de 12 horas, pingear a este para que se encienda
+
 
 function RandomNumber(min,max) {
    var number = Math.random()*max + min;
