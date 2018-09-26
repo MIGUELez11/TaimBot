@@ -48,7 +48,7 @@ var BgWhite = "\x1b[47m";
 
 
 server.listen(5000, function () {
-  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+  console.log('Express server listening on %d, in %s mode', 5000, app.get('env'));
 });
 
 //Initialize variables
