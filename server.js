@@ -9,7 +9,7 @@ const Discord = require('discord.js');
 const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const { TOKEN, PREFIX, GOOGLE_API_KEY, DEFAULTROLE } = require('./config');
+const {PREFIX, DEFAULTROLE } = require('./config');
 
 //CREATE A CLIENT
 const client = new Discord.Client();
@@ -57,10 +57,10 @@ const queue = new Map();
 ------------------------------------------------------
 */
 
-if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
-   TOKEN = process.env.TOKEN;
-   GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-}
+//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
+   const TOKEN = process.env.TOKEN;
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+//}
 
 function RandomNumber(min,max) {
    var number = Math.random()*max + min;
