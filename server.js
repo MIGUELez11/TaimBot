@@ -46,6 +46,11 @@ var BgMagenta = "\x1b[45m";
 var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
+
+server.listen(5000, function () {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+});
+
 //Initialize variables
 //if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
    const TOKEN = process.env.TOKEN;
