@@ -74,8 +74,8 @@ const queue = new Map();
 */
 var https = require("http");
 var date = new Date();
-var h date.getHours();
-var min date.getMinutes();
+var h = date.getHours();
+var min = date.getMinutes();
 
 setInterval (function()) {
    http.get("http://taimbot.herokuapp.com");
