@@ -9,7 +9,7 @@ const Discord = require('discord.js');
 const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const { TOKEN, PREFIX, GOOGLE_API_KEY, DEFAULTROLE } = require('./config');
+const {PREFIX, DEFAULTROLE } = require('./config');
 
 //CREATE A CLIENT
 const client = new Discord.Client();
@@ -47,6 +47,11 @@ var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
 //Initialize variables
+//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
+   const TOKEN = process.env.TOKEN;
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+//}
+
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 
