@@ -77,9 +77,9 @@ var date = new Date();
 var h = date.getHours();
 var min = date.getMinutes();
 
-setInterval (function()) {
+setInterval (function() {
    http.get("http://taimbot.herokuapp.com");
-}, (5*60*1000);
+}, 5*60*1000);
 
 
 function RandomNumber(min,max) {
