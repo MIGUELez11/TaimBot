@@ -47,6 +47,11 @@ var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
 //Initialize variables
+//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
+   const TOKEN = process.env.TOKEN;
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+//}
+
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 
@@ -56,11 +61,6 @@ const queue = new Map();
                         FUNCTIONS
 ------------------------------------------------------
 */
-
-//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
-   const TOKEN = process.env.TOKEN;
-   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-//}
 
 function RandomNumber(min,max) {
    var number = Math.random()*max + min;
