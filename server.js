@@ -79,7 +79,7 @@ var min = date.getMinutes();
 
 function setInterval (function() {
    http.get("http://taimbot.herokuapp.com");
-   console.log(pinged);
+   console.log("pinged");
 }, 5*60*1000);
 
 
