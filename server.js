@@ -47,7 +47,7 @@ var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
 
-server.listen(5000, function () {
+.listen(5000, function () {
   console.log('Express server listening on %d, in %s mode', 5000, app.get('env'));
 });
 
