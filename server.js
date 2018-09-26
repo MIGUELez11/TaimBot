@@ -46,16 +46,6 @@ var BgMagenta = "\x1b[45m";
 var BgCyan = "\x1b[46m";
 var BgWhite = "\x1b[47m";
 
-//Initialize variables
-//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
-   const TOKEN = process.env.TOKEN;
-   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-//}
-
-const youtube = new YouTube(GOOGLE_API_KEY);
-const queue = new Map();
-
-
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -68,8 +58,14 @@ express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
+//Initialize variables
+//if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
+   const TOKEN = process.env.TOKEN;
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+//}
 
-
+const youtube = new YouTube(GOOGLE_API_KEY);
+const queue = new Map();
 
 /*
 ------------------------------------------------------
