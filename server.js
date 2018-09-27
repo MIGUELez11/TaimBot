@@ -92,7 +92,7 @@ if ((h >= minH && h <= maxH)) {
 console.log(h,":",min,",",inTime);
 
 setInterval (function() {
-   var h = (date.getHours();
+   var h = (date.getHours());
    var min = date.getMinutes();
    if ((h >= minH && h <= maxH)) {
       if ((h = maxH) && (min >= (maxMin-5) && min <= maxMin)) {
