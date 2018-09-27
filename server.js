@@ -83,7 +83,7 @@ const queue = new Map();
 */
 var https = require("http");
 var date = new Date();
-var h = date.getHours();
+var h = date.getHours()+2;
 var min = date.getMinutes();
 if ((h >= minH && h <= maxH)) {
    var inTime = true;
