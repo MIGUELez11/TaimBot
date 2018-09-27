@@ -91,6 +91,8 @@ var inTime = true;
 
 
 setInterval (function() {
+   var h = date.getHours();
+   var min = date.getMinutes();
    if ((h >= minH && h <= maxH)) {
       if ((h = maxH) && (min >= (maxMin-5) && min <= maxMin)) {
          https.get("http://taimbotmadrugada.herokuapp.com");
