@@ -206,7 +206,11 @@ client.on('message', async msg => { // eslint-disable-line
    		if (!msg.member.voiceChannel) return msg.channel.send('No estás en un canal de voz!');
    		if (!serverQueue) return msg.channel.send('Pero a que le quieres subir el volumen.');
    		if (!args[2]) return msg.channel.send(`El volumen actual es: **${serverQueue.volume}**`);
-   		serverQueue.volume = args[2];
+         if(args[2] > 5) {
+            serverQueue.volume = 5;
+         }
+         else serverQueue.volume = args[2];
+
    		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[2] / 5);
    		return msg.channel.send(`El nuevo volumen es: **${args[2]}**`);
    	} else if (arg1 === 'np' || arg1 === 'playing' || arg1 === 'sonando') {
