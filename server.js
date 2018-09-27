@@ -207,12 +207,17 @@ client.on('message', async msg => { // eslint-disable-line
    		if (!serverQueue) return msg.channel.send('Pero a que le quieres subir el volumen.');
    		if (!args[2]) return msg.channel.send(`El volumen actual es: **${serverQueue.volume}**`);
          if(args[2] > 5) {
-            serverQueue.volume = 5;
+            serverQueue.volume = 5
+            serverQueue.connection.dispatcher.setVolumeLogarithmic(5 / 5);
+            return msg.channel.send(`El nuevo volumen es: **5**`);
          }
-         else serverQueue.volume = args[2];
+         else {
+            serverQueue.volume = args[2];
+            serverQueue.connection.dispatcher.setVolumeLogarithmic(args[2] / 5);
+            return msg.channel.send(`El nuevo volumen es: **${args[2]}**`);
+         }
 
-   		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[2] / 5);
-   		return msg.channel.send(`El nuevo volumen es: **${args[2]}**`);
+
    	} else if (arg1 === 'np' || arg1 === 'playing' || arg1 === 'sonando') {
    		if (!serverQueue) return msg.channel.send('No hay nada reproduciendo.');
    		return msg.channel.send(`🎶 Sonando: **${serverQueue.songs[0].title}**`);
