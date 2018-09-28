@@ -96,10 +96,11 @@ setInterval (function() {
    var min = date.getMinutes();
    if ((h >= minH && h <= maxH)) {
       if ((h = maxH) && (min >= (maxMin-5) && min <= maxMin)) {
-         https.get("http://taimbotmadrugada.herokuapp.com");
+         https.get(awakeUrl);
+         console.log("awaking ", awakeUrl);
       }
 
-      https.get("http://taimbot.herokuapp.com");
+      https.get(url);
       console.log("pinged");
       inTime = true;
    }
