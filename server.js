@@ -139,7 +139,7 @@ client.on('ready', () => {
 
    guild = client.guilds.get('380446323205210112');
    Role = guild.roles.find(x => x.name === DEFAULTROLE);
-   MainText = client.channels.get('493355326536548356');
+   MainText = '493355326536548356';
    send = true;
    console.log(`Role is`, BgYellow,`${Role.name}`, Reset);
 
@@ -161,7 +161,7 @@ if ((h >= minH && h <= maxH)) {
 
 
    if (send) {
-      MainText.send('My Message');
+      client.channels.get(MainText).send('My Message');
       send = false;
    }
 
