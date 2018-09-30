@@ -96,7 +96,7 @@ setInterval (function() {
    var h = (date.getHours());
    var min = date.getMinutes();
    if ((h >= minH && h <= maxH)) {
-      if ((h = maxH) && (min >= (maxMin-5) && min <= maxMin)) {
+      if ((h == maxH) && (min >= (maxMin-5) && min <= maxMin)) {
          https.get(awakeUrl);
          console.log("awaking ", awakeUrl);
       }
@@ -153,7 +153,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 
 
 //If it is this bot time then keep idle
-if ((h >= minH && h <= maxH)) {
+//if ((h >= minH && h <= maxH)) {
 
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
@@ -386,7 +386,7 @@ if ((h >= minH && h <= maxH)) {
          }
       }
    });
-}
+//}
 
 
 
