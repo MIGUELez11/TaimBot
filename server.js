@@ -18,6 +18,8 @@ const client = new Discord.Client();
 var msg;
 var guild;
 var Role;
+var MainText;
+var send;
 
 //colors
 var Reset = "\x1b[0m";
@@ -137,6 +139,8 @@ client.on('ready', () => {
 
    guild = client.guilds.get('380446323205210112');
    Role = guild.roles.find(x => x.name === DEFAULTROLE);
+   MainText = client.channels.get('493355326536548356');
+   send = true;
    console.log(`Role is`, BgYellow,`${Role.name}`, Reset);
 
 });
@@ -154,6 +158,12 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 
 //If it is this bot time then keep idle
 if ((h >= minH && h <= maxH)) {
+
+
+   if (send) {
+      MainText.send('My Message');
+      send = false;
+   }
 
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
