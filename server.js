@@ -11,6 +11,8 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
 
+const fs = require("fs");
+
 //CREATE A CLIENT
 const client = new Discord.Client();
 
@@ -351,14 +353,18 @@ if ((h >= minH && h <= maxH)) {
 
 
    client.on('message', message => {
+
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
+
       msg = message.content.toLowerCase();
       if (msg[0] == PREFIX) {
-         switch (msg) {
-            case PREFIX + 'hola':
-            case PREFIX + 'hello':
-            case PREFIX + 'ey':
-            case PREFIX + 'hey':
-               console.log(msg);
+         switch (command) {
+            case 'hola':
+            case 'hello':
+            case 'ey':
+            case 'hey':
+               console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
                //message.member.addRole("name","TAIMERS");
@@ -371,10 +377,10 @@ if ((h >= minH && h <= maxH)) {
 
                //message.member.voiceChannel.join();
                break;
-            case PREFIX + 'adios':
-            case PREFIX + 'adeu':
-            case PREFIX + 'chao':
-               console.log(msg);
+            case 'adios':
+            case 'adeu':
+            case 'chao':
+               console.log(command);
                // Send "pong" to the same channel
                switch (Math.round(RandomNumber(0,3))) {
                   case 0 : message.channel.send(`Hasta otra ${message.author}`); break;
