@@ -396,7 +396,7 @@ if ((h >= minH && h <= maxH)) {
                break;
             case 'music':
             case 'musica':
-            let commandFile = require(`./commands/music.js`);
+            let commandFile = require(`./Commands/music.js`);
             commandFile.run(client, message, args);
                break;
          }
