@@ -1,5 +1,10 @@
 exports.run = (client, message, args) => {
+   const YouTube = require('simple-youtube-api');
+   const ytdl = require('ytdl-core');
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
+   const youtube = new YouTube(GOOGLE_API_KEY);
+   const queue = new Map();
    //if (msg.author.bot) return undefined;
    //if (!msg.content.startsWith(PREFIX)) return undefined;
 

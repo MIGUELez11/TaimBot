@@ -7,8 +7,8 @@
 const Util = require('discord.js');
 const Discord = require('discord.js');
 const config = require("./config");
-const YouTube = require('simple-youtube-api');
-const ytdl = require('ytdl-core');
+//const YouTube = require('simple-youtube-api');
+//const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
 const prefix = PREFIX;
 
@@ -66,7 +66,7 @@ express()
 //Initialize variables
 //if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
    const TOKEN = process.env.TOKEN;
-   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+//   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
    const minH =  process.env.minH;
    const maxH =  process.env.maxH;
@@ -78,8 +78,8 @@ express()
 //}
 
 
-const youtube = new YouTube(GOOGLE_API_KEY);
-const queue = new Map();
+//const youtube = new YouTube(GOOGLE_API_KEY);
+//const queue = new Map();
 
 /*
 ------------------------------------------------------
