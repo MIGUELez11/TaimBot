@@ -11,11 +11,11 @@ exports.run = (client, message, args) => {
    //let command = msg.content.toLowerCase().split(' ')[0];
    //command = command.slice(PREFIX.length)
 
-   //let arg1 = msg.content.toLowerCase().split(' ')[1];
-   //arg1 = command.slice(PREFIX.length)
+   //let args[1] = msg.content.toLowerCase().split(' ')[1];
+   //args[1] = command.slice(PREFIX.length)
 
    //if (command === 'musica' || command === 'music' || command === 'dj') {
-      if (arg1 === 'play' || arg1 === "song" || arg1 === 'reproducir' || arg1 === 'cancion') {
+      if (args[1] === 'play' || args[1] === "song" || args[1] === 'reproducir' || args[1] === 'cancion') {
          const voiceChannel = msg.member.voiceChannel;
          if (!voiceChannel) return msg.channel.send('Necesitas estar en un canal de voz para reproducir canciones');
          const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -66,18 +66,18 @@ exports.run = (client, message, args) => {
             }
             return handleVideo(video, msg, voiceChannel);
          }
-      } else if (arg1 === 'skip' || arg1 === 'saltar' || arg1 === 'siguiente' || arg1 === 'next') {
+      } else if (args[1] === 'skip' || args[1] === 'saltar' || args[1] === 'siguiente' || args[1] === 'next') {
          if (!msg.member.voiceChannel) return msg.channel.send('No estás en un canal de voz!');
          if (!serverQueue) return msg.channel.send('No hay ninguna canción reproduciéndose.');
          serverQueue.connection.dispatcher.end('Y... Siguiente canción');
          return undefined;
-      } else if (arg1 === 'stop' || arg1 === 'parar' || arg1 === 'terminar') {
+      } else if (args[1] === 'stop' || args[1] === 'parar' || args[1] === 'terminar') {
          if (!msg.member.voiceChannel) return msg.channel.send('no estás en un canal de voz!');
          if (!serverQueue) return msg.channel.send('Por aquí no hay nada .');
          serverQueue.songs = [];
          serverQueue.connection.dispatcher.end('Y adios a la musica :(');
          return undefined;
-      } else if (arg1 === 'volume' || arg1 === 'volumen') {
+      } else if (args[1] === 'volume' || args[1] === 'volumen') {
          if (!msg.member.voiceChannel) return msg.channel.send('No estás en un canal de voz!');
          if (!serverQueue) return msg.channel.send('Pero a que le quieres subir el volumen.');
          if (!args[2]) return msg.channel.send(`El volumen actual es: **${serverQueue.volume}**`);
@@ -93,24 +93,24 @@ exports.run = (client, message, args) => {
          }
 
 
-      } else if (arg1 === 'np' || arg1 === 'playing' || arg1 === 'sonando') {
+      } else if (args[1] === 'np' || args[1] === 'playing' || args[1] === 'sonando') {
          if (!serverQueue) return msg.channel.send('No hay nada reproduciendo.');
          return msg.channel.send(`🎶 Sonando: **${serverQueue.songs[0].title}**`);
-      } else if (arg1 === 'queue' || arg1 === 'playlist' || arg1 === 'cola') {
+      } else if (args[1] === 'queue' || args[1] === 'playlist' || args[1] === 'cola') {
          if (!serverQueue) return msg.channel.send('Nada en la cola.');
          return msg.channel.send(`
    __**LA COLA ^.^ :**__
    ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
    **SONANDO:** ${serverQueue.songs[0].title}
          `);
-      } else if (arg1 === 'pause' || arg1 === 'pausar' || arg1 === 'pausa') {
+      } else if (args[1] === 'pause' || args[1] === 'pausar' || args[1] === 'pausa') {
          if (serverQueue && serverQueue.playing) {
             serverQueue.playing = false;
             serverQueue.connection.dispatcher.pause();
             return msg.channel.send('⏸ Yo te lo paro!');
          }
          return msg.channel.send('No oigo nada.');
-      } else if (arg1 === 'resume' || arg1 === 'resumir' || arg1 === 'continuar') {
+      } else if (args[1] === 'resume' || args[1] === 'resumir' || args[1] === 'continuar') {
          if (serverQueue && !serverQueue.playing) {
             serverQueue.playing = true;
             serverQueue.connection.dispatcher.resume();
