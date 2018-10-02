@@ -379,14 +379,15 @@ if ((h >= minH && h <= maxH)) {
                      name: "Música",
                      value: `
                      /music [estos comandos funcionan en español]
-                        play (nombre canción) \n -> reproduce música en el canal de voz.
-                        pause                  -> pausa la canción.
-                        resume                 -> reanuda la canción.
-                        stop                   -> Para el reproductor.
-                        skip                   -> Salta la canción.
-                        volume (0.0 - 5.0)     -> Establece el volumen.
-                        np                     -> Devuelve la canción que se está reproduciendo.
-                        playlist               -> muestra la playlist.
+                     
+                     /music play (nombre canción)  -> reproduce música en el canal de voz.
+                     /music pause                  -> pausa la canción.
+                     /music resume                 -> reanuda la canción.
+                     /music stop                   -> Para el reproductor.
+                     /music skip                   -> Salta la canción.
+                     /music volume (0.0 - 5.0)     -> Establece el volumen.
+                     /music np                     -> Devuelve la canción que se está reproduciendo.
+                     /music playlist               -> muestra la playlist.
 
                      ejemplo: /musica reproducir Blooming Black
                      ejemplo: /musica volume 0.5
