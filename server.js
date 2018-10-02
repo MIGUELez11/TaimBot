@@ -160,21 +160,21 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 if ((h >= minH && h <= maxH)) {
 
    //WHEN A MESSAGE IS SENT
-   /*client.on('message', async msg => { // eslint-disable-line
+   client.on('message', async msg => { // eslint-disable-line
       //Music code
       const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
 
       // The list of if/else is replaced with those simple 2 lines:
-      if (command == "musica" || command == "music") {
+      //if (command == "musica" || command == "music") {
          try {
            let commandFile = require(`./commands/music.js`);
            commandFile.run(client, message, args);
          } catch (err) {
            console.error(err);
          }
-      }
-   });*/
+      //}
+   });
 
 
    client.on('message', message => {
