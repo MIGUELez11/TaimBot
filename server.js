@@ -136,7 +136,7 @@ client.on('ready', () => {
    console.log(BgGreen,'Toy Ready', Reset);
    console.log('\n');
 
-   client.user.setActivity('TAIM GAMING', { type: 'watching' })
+   client.user.setActivity('TAIM GAMING | /help', { type: 'watching' })
       .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
       .catch(console.error);
 
@@ -379,7 +379,7 @@ if ((h >= minH && h <= maxH)) {
                      name: "Música",
                      value: `
                      /music [estos comandos funcionan en español]
-                     
+
                      /music play (nombre canción)  -> reproduce música en el canal de voz.
                      /music pause                  -> pausa la canción.
                      /music resume                 -> reanuda la canción.
