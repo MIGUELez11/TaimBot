@@ -10,6 +10,7 @@ const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
+const fs = require("fs");
 
 //CREATE A CLIENT
 const client = new Discord.Client();
