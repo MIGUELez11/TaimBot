@@ -7,8 +7,8 @@
 const Util = require('discord.js');
 const Discord = require('discord.js');
 const config = require("./config");
-//const YouTube = require('simple-youtube-api');
-//const ytdl = require('ytdl-core');
+const YouTube = require('simple-youtube-api');
+const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
 const prefix = PREFIX;
 
@@ -66,7 +66,7 @@ express()
 //Initialize variables
 //if (TOKEN== undefined && GOOGLE_API_KEY == undefined) {
    const TOKEN = process.env.TOKEN;
-//   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
    const minH =  process.env.minH;
    const maxH =  process.env.maxH;
@@ -78,8 +78,8 @@ express()
 //}
 
 
-//const youtube = new YouTube(GOOGLE_API_KEY);
-//const queue = new Map();
+const youtube = new YouTube(GOOGLE_API_KEY);
+const queue = new Map();
 
 /*
 ------------------------------------------------------
@@ -161,7 +161,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 
 //If it is this bot time then keep idle
 if ((h >= minH && h <= maxH)) {
-/*
+
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
    	if (msg.author.bot) return undefined;
@@ -350,7 +350,7 @@ if ((h >= minH && h <= maxH)) {
    }
 
 
-*/
+
 
 
    client.on('message', message => {
@@ -361,10 +361,10 @@ if ((h >= minH && h <= maxH)) {
       msg = message.content.toLowerCase();
       if (msg[0] == PREFIX) {
          switch (command) {
-            case 'hola':
-            case 'hello':
-            case 'ey':
-            case 'hey':
+            case 'hola','hello','ey','hey','hi':
+            //case 'hello':
+            //case 'ey':
+            //case 'hey':
                console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
@@ -391,18 +391,6 @@ if ((h >= minH && h <= maxH)) {
                }
                //message.member.voiceChannel.leave();
                break;
-            case PREFIX + 'role':
-               console.log(`${Role.name}`);
-               break;
-            case 'music':
-            case 'musica':
-            let commandFile = require(`./Commands/music.js`);
-            commandFile.run(client, message, args);
-               break;
-         }
-      }
-   });
-}
 
 
 
