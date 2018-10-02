@@ -367,7 +367,7 @@ if ((h >= minH && h <= maxH)) {
                   title: "Command list",
                   description: "This is a list of all commands",
 
-                  fields: [{
+                  fields[{
                      name: "Conversación",
                      value: `
                      /hola  -> El bot te saluda
@@ -399,7 +399,6 @@ if ((h >= minH && h <= maxH)) {
                   }
                }
             });
-         }
                break;
             case 'hola': case 'hello': case 'ey': case 'hey':
                console.log(command);
