@@ -174,7 +174,7 @@ if ((h >= minH && h <= maxH)) {
            console.error(err);
          }
       }
-   };
+   });
 
 
    client.on('message', message => {
