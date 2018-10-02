@@ -218,7 +218,7 @@ if ((h >= minH && h <= maxH)) {
                console.log(`${Role.name}`);
                break;
          }
-      }
+      //}
    });
 }
 
