@@ -162,13 +162,13 @@ if ((h >= minH && h <= maxH)) {
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
       //Music code
-      const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+      const args = message.content.slice(config.prefix.length)/*.trim()*/.split(/ +/g);
       const command = args.shift().toLowerCase();
 
       // The list of if/else is replaced with those simple 2 lines:
       if (command == "musica" || command == "music") {
          try {
-           let commandFile = require(`./commands/${command}.js`);
+           let commandFile = require(`./commands/music.js`);
            commandFile.run(client, message, args);
          } catch (err) {
            console.error(err);
@@ -178,7 +178,7 @@ if ((h >= minH && h <= maxH)) {
 
 
    client.on('message', message => {
-      const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
+      const args = message.content.slice(PREFIX.length)/*.trim()*/.split(/ +/g);
       const command = args.shift().toLowerCase();
 
 
