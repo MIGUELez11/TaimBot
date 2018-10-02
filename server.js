@@ -10,7 +10,7 @@ const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
-const prefix = PREFIX;
+const prefix = PREFIX
 
 const fs = require("fs");
 
@@ -361,10 +361,10 @@ if ((h >= minH && h <= maxH)) {
       msg = message.content.toLowerCase();
       if (msg[0] == PREFIX) {
          switch (command) {
-            case 'hola','hello','ey','hey','hi':
-            //case 'hello':
-            //case 'ey':
-            //case 'hey':
+            case 'hola':
+            case 'hello':
+            case 'ey':
+            case 'hey':
                console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
@@ -391,6 +391,13 @@ if ((h >= minH && h <= maxH)) {
                }
                //message.member.voiceChannel.leave();
                break;
+            case PREFIX + 'role':
+               console.log(`${Role.name}`);
+               break;
+         }
+      }
+   });
+}
 
 
 
