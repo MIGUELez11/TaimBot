@@ -295,7 +295,7 @@ if ((h >= minH && h <= maxH)) {
             }
             return msg.channel.send('No hay ninguna canción parada :P.');
          }
-      }
+      //}
       return undefined;
       });
 
