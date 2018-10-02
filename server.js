@@ -361,7 +361,46 @@ if ((h >= minH && h <= maxH)) {
       msg = message.content.toLowerCase();
       if (msg[0] == PREFIX) {
          switch (command) {
-            case 'hola','hello','ey','hey':
+            case 'help': case 'ayuda':
+               message.channel.send(embed:{
+                  color: 16752640,
+                  title: "Command list",
+                  description: "This is a list of all commands",
+
+                  fields[{
+                     name: "Conversación",
+                     value: `
+                     /hola  -> El bot te saluda
+                     /adios -> El bot se despide
+
+                     `
+                  },
+                  {
+                     name: "Música",
+                     value: `
+                     /music [estos comandos funcionan en español]
+                        play (nombre canción)  -> reproduce música en el canal de voz.
+                        pause                  -> pausa la canción.
+                        resume                 -> reanuda la canción.
+                        stop                   -> Para el reproductor.
+                        skip                   -> Salta la canción.
+                        volume (0.0 - 5.0)     -> Establece el volumen.
+                        np                     -> Devuelve la canción que se está reproduciendo.
+                        playlist               -> muestra la playlist.
+
+                     ejemplo: /musica reproducir Blooming Black
+                     ejemplo: /musica volume 0.5
+                     `
+                  }],
+                  timestamp: new Date(),
+                  footer: {
+                     icon_url: client.user.avatarURL,
+                     text: "Developed by @MIGUELez11#7381"
+                  }
+               }
+         });
+               break;
+            case 'hola': case 'hello': case 'ey': case 'hey':
                console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
@@ -375,9 +414,7 @@ if ((h >= minH && h <= maxH)) {
 
                //message.member.voiceChannel.join();
                break;
-            case 'adios':
-            case 'adeu':
-            case 'chao':
+            case 'adios': case 'adeu': case 'chao':
                console.log(command);
                // Send "pong" to the same channel
                switch (Math.round(RandomNumber(0,3))) {
