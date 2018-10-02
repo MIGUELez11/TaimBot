@@ -379,7 +379,7 @@ if ((h >= minH && h <= maxH)) {
                      name: "Música",
                      value: `
                      /music [estos comandos funcionan en español]
-                        play (nombre canción)  -> reproduce música en el canal de voz.
+                     ___play (nombre canción)  -> reproduce música en el canal de voz.
                         pause                  -> pausa la canción.
                         resume                 -> reanuda la canción.
                         stop                   -> Para el reproductor.
