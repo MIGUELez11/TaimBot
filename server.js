@@ -351,13 +351,16 @@ if ((h >= minH && h <= maxH)) {
 
 
    client.on('message', message => {
-      msg = message.content.toLowerCase();
-      if (msg[0] == PREFIX) {
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
+
+
+      if (message.content[0] == PREFIX) {
          switch (msg) {
-            case PREFIX + 'hola':
-            case PREFIX + 'hello':
-            case PREFIX + 'ey':
-            case PREFIX + 'hey':
+            case 'hola':
+            case 'hello':
+            case 'ey':
+            case 'hey':
                console.log(msg);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
@@ -371,9 +374,9 @@ if ((h >= minH && h <= maxH)) {
 
                //message.member.voiceChannel.join();
                break;
-            case PREFIX + 'adios':
-            case PREFIX + 'adeu':
-            case PREFIX + 'chao':
+            case 'adios':
+            case 'adeu':
+            case 'chao':
                console.log(msg);
                // Send "pong" to the same channel
                switch (Math.round(RandomNumber(0,3))) {
@@ -384,7 +387,7 @@ if ((h >= minH && h <= maxH)) {
                }
                //message.member.voiceChannel.leave();
                break;
-            case PREFIX + 'role':
+            case 'role':
                console.log(`${Role.name}`);
                break;
          }
