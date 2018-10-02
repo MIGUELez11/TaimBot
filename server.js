@@ -356,12 +356,12 @@ if ((h >= minH && h <= maxH)) {
 
 
       if (message.content[0] == PREFIX) {
-         switch (msg) {
+         switch (command) {
             case 'hola':
             case 'hello':
             case 'ey':
             case 'hey':
-               console.log(msg);
+               console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
                //message.member.addRole("name","TAIMERS");
