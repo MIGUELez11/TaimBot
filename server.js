@@ -362,7 +362,7 @@ if ((h >= minH && h <= maxH)) {
       if (msg[0] == PREFIX) {
          switch (command) {
             case 'help': case 'ayuda':
-               message.channel.send(embed:{
+               message.channel.send({embed:{
                   color: 16752640,
                   title: "Command list",
                   description: "This is a list of all commands",
@@ -398,7 +398,8 @@ if ((h >= minH && h <= maxH)) {
                      text: "Developed by @MIGUELez11#7381"
                   }
                }
-         });
+            });
+         }
                break;
             case 'hola': case 'hello': case 'ey': case 'hey':
                console.log(command);
