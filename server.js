@@ -160,9 +160,9 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 if ((h >= minH && h <= maxH)) {
 
    //WHEN A MESSAGE IS SENT
-   client.on('message', async msg => { // eslint-disable-line
+   /*client.on('message', async msg => { // eslint-disable-line
       //Music code
-      const args = message.content.slice(config.prefix.length)/*.trim()*/.split(/ +/g);
+      const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
 
       // The list of if/else is replaced with those simple 2 lines:
@@ -174,15 +174,15 @@ if ((h >= minH && h <= maxH)) {
            console.error(err);
          }
       }
-   });
+   });*/
 
 
    client.on('message', message => {
-      const args = message.content.slice(PREFIX.length)/*.trim()*/.split(/ +/g);
+      const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
 
 
-      if (message.content[0] == PREFIX) {
+      //if (message.content[0] == PREFIX) {
          switch (command) {
             case 'hola':
             case 'hello':
