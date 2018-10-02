@@ -10,6 +10,7 @@ const config = require("./config");
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const {PREFIX, DEFAULTROLE } = require('./config');
+const prefix = PREFIX;
 
 const fs = require("fs");
 
