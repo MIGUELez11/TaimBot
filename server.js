@@ -361,10 +361,7 @@ if ((h >= minH && h <= maxH)) {
       msg = message.content.toLowerCase();
       if (msg[0] == PREFIX) {
          switch (command) {
-            case 'hola':
-            case 'hello':
-            case 'ey':
-            case 'hey':
+            case 'hola','hello','ey','hey':
                console.log(command);
                // Send "pong" to the same channel
                //console.log(message.member.GuildMember.username);
