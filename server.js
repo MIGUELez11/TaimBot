@@ -164,7 +164,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 
 //If it is this bot time then keep idle
 //if ((h >= minH && h <= maxH)) {
-if (active) {
+//if (active) {
 
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
@@ -436,7 +436,7 @@ if (active) {
          }
       }
    });
-}
+//}
 
 
 
