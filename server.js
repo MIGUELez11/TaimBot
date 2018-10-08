@@ -23,6 +23,7 @@ var guild;
 var Role;
 var MainText;
 var send;
+var active;
 
 //colors
 var Reset = "\x1b[0m";
@@ -104,6 +105,7 @@ setInterval (function() {
       if ((h == maxH) && (min >= (maxMin-5) && min <= maxMin)) {
          https.get(awakeUrl);
          console.log("awaking ", awakeUrl);
+         active = false;
       }
 
       https.get(url);
@@ -145,6 +147,7 @@ client.on('ready', () => {
    MainText = '493355326536548356';
    send = true;
    console.log(`Role is`, BgYellow,`${Role.name}`, Reset);
+   active = true;
 
 });
 
@@ -161,6 +164,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
 
 //If it is this bot time then keep idle
 //if ((h >= minH && h <= maxH)) {
+if active {
 
    //WHEN A MESSAGE IS SENT
    client.on('message', async msg => { // eslint-disable-line
@@ -432,7 +436,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
          }
       }
    });
-//}
+}
 
 
 
