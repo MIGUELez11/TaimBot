@@ -3,6 +3,13 @@
    DEFINE VARIABLES AND CONSTANTS
 ----------------------------------------------------
 */
+
+
+This is made to not working any more :P 
+
+
+
+
 //requirements
 const Util = require('discord.js');
 const Discord = require('discord.js');
