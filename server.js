@@ -407,7 +407,7 @@ client.on('reconnecting', () => console.log('I am reconnecting now!'));
                   timestamp: new Date(),
                   footer: {
                      icon_url: client.user.avatarURL,
-                     text: "Developed by @MIGUELez11#7381"
+                     text: "Developed by @MIGUELez11#9720"
                   }
                }
             });
